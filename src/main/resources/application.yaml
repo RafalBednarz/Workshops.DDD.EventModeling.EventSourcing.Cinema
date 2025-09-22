@@ -75,7 +75,7 @@ springdoc:
 
 app:
   sample-data-init:
-    enabled: true
+    enabled: false
 
 slices:
   dayschedule:

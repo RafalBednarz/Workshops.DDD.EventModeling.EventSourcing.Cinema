@@ -76,12 +76,31 @@ private class ScreeningSeatsReadModelProjector(
 
     @EventHandler
     fun handle(event: SeatBlocked) {
+        val screeningId = event.screeningId.raw
+        val state = repository.findById(screeningId).orElse(ScreeningSeatsReadModel(screeningId, emptyMap()))
+        val updatedState = state.copy(
+            seats = state.seats + (event.seat.toString() to ScreeningSeatsReadModel.Seat(
+                event.seat.row,
+                event.seat.column,
+                event.blockadeOwner
 
+            ))
+        )
+        repository.save(updatedState)
     }
 
     @EventHandler
     fun handle(event: SeatUnblocked) {
-
+        val screeningId = event.screeningId.raw
+        val state = repository.findById(screeningId).orElse(ScreeningSeatsReadModel(screeningId, emptyMap()))
+        val updatedState = state.copy(
+            seats = state.seats + (event.seat.toString() to ScreeningSeatsReadModel.Seat(
+                event.seat.row,
+                event.seat.column,
+                null
+            ))
+        )
+        repository.save(updatedState)
     }
 
     @ResetHandler

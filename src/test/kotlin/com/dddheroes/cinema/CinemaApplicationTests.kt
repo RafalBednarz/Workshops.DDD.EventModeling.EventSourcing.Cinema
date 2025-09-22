@@ -5,8 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles
 
-@Import(TestcontainersConfiguration::class)
-@ActiveProfiles("test", "testcontainers")
 @SpringBootTest
 class CinemaApplicationTests {
 

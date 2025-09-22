@@ -34,9 +34,8 @@ import java.time.ZoneOffset
 import java.util.concurrent.CompletableFuture
 
 @SpringBootTest
-@ActiveProfiles("test", "testcontainers")
-// @ActiveProfiles("test") - if you don't want to use testcontainers
-@Import(TestcontainersConfiguration::class)
+//@ActiveProfiles("test", "testcontainers")
+ @ActiveProfiles("test")
 abstract class MessagingSpringBootTest {
     @MockitoSpyBean
     @Autowired

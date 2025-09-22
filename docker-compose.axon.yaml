@@ -17,5 +17,8 @@ services:
     ports:
       - "6556:6556"
     volumes:
-      - ./volumes/postgres-axon:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     command: -p 6556
+
+volumes:
+  pgdata:
